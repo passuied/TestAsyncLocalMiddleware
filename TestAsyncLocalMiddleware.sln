@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAsyncLocalMiddleware", "TestAsyncLocalMiddleware\TestAsyncLocalMiddleware.csproj", "{CFD9AB44-662F-48C2-9915-849A37072851}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAsyncLocalMiddleware", "TestAsyncLocalMiddleware\TestAsyncLocalMiddleware.csproj", "{CFD9AB44-662F-48C2-9915-849A37072851}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAsyncLocalMiddleware.Tests", "TestAsyncLocalMiddleware.Tests\TestAsyncLocalMiddleware.Tests.csproj", "{42C2AB91-0588-4EEF-A8D7-441BB9A90BD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAsyncLocalMiddleware.Tests", "TestAsyncLocalMiddleware.Tests\TestAsyncLocalMiddleware.Tests.csproj", "{42C2AB91-0588-4EEF-A8D7-441BB9A90BD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{832EFB33-407D-4442-9E87-D1EEEA8F4CF4}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
