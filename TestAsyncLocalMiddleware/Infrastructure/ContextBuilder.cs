@@ -7,8 +7,8 @@ namespace TestAsyncLocalMiddleware.Infrastructure
 {
     internal class ContextBuilder
     {
-        public const string CorpIdHeader = "x-csod-corp-id";
-        public const string UserIdHeader = "x-csod-user-id";
+        public const string CorpIdHeader = "x-corp-id";
+        public const string UserIdHeader = "x-user-id";
 
         /// <summary>
         /// Build context based on ServiceContextAccessor, security token and header dictionary.

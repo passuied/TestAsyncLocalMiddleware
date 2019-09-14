@@ -5,8 +5,8 @@ Troubleshooting issues with AsyncLocal when used within a middleware
 1. Make an HTTP Request to service as follows:
 - GET /
   - Headers:
-    - x-csod-corp-id: 1
-    - x-csod-user-id: 5
+    - x-corp-id: 1
+    - x-user-id: 5
     - x-auth-corp-id: 10
     - x-auth-user-id: 50
     
@@ -14,8 +14,8 @@ Troubleshooting issues with AsyncLocal when used within a middleware
 2. Make a second HTTP request to service as follows:
 - GET /
   - Headers:
-    - x-csod-corp-id: 2
-    - x-csod-user-id: 8
+    - x-corp-id: 2
+    - x-user-id: 8
     - x-auth-corp-id: 20
     - x-auth-user-id: 80
  - The middleware crashes because the `SecurityTokenAccessor` keeps items from first request, even though it is backed by AsyncLocal which should guarantee the 2 requests use different logical scopes.

@@ -23,14 +23,13 @@ namespace TestAsyncLocalMiddleware.Infrastructure
             this._securityTokenAccessor = securityTokenAccessor;
         }
 
-        public async Task InvokeAsync(HttpContext context, ILog log)
+        public async Task Invoke(HttpContext context, ILog log)
         {
             try
             {
                 log.Trace("Authentication Middleware invoked");
 
                 if (_securityTokenAccessor != null && context.Request.Headers.Any())
-                    // this line must stay in this scope, not inside an awaitable method
                     PopulateTokenAccessor(context.Request.Headers);
 
 
