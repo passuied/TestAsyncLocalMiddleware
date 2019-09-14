@@ -17,7 +17,7 @@ Troubleshooting issues with AsyncLocal when used within a middleware
 
 ## How to reproduce issue
 1. Make an HTTP Request to service as follows:
-- GET /
+- GET /api/values
   - Headers:
     - x-corp-id: 1
     - x-user-id: 5
@@ -26,7 +26,7 @@ Troubleshooting issues with AsyncLocal when used within a middleware
     
 - The response returns successfully 1 and 5 (which is already an issue since the dependency chain causes the DefaultServiceContext to be resolved before the middleware overwrites the values)
 2. Make a second HTTP request to service as follows:
-- GET /
+- GET /api/values
   - Headers:
     - x-corp-id: 2
     - x-user-id: 8
