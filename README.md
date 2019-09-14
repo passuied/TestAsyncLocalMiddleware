@@ -10,7 +10,7 @@ Troubleshooting issues with AsyncLocal when used within a middleware
     - x-auth-corp-id: 10
     - x-auth-user-id: 50
     
-- The response returns successfully 10 and 50 because they override the first 2
+- The response returns successfully 1 and 5 (which is already an issue since the dependency chain causes the DefaultServiceContext to be resolved before the middleware overwrites the values)
 2. Make a second HTTP request to service as follows:
 - GET /
   - Headers:
