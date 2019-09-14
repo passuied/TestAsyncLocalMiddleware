@@ -17,11 +17,12 @@ Troubleshooting issues with AsyncLocal when used within a middleware
 
 ## How to reproduce issue
 For convenience, use the Postman export located in `artifacts/TestAsyncLocalMiddleware.postman_collection.json` file.
-0. Pre-requisite
+
+1. Pre-requisite
 - Start the service using following command:
 ```> dotnet run -p ./TestAsyncLocalMiddleware```
 
-1. Make an HTTP Request to service as follows:
+2. Make an HTTP Request to service as follows:
 - GET /api/values
   - Headers:
     - x-corp-id: 1
@@ -30,7 +31,7 @@ For convenience, use the Postman export located in `artifacts/TestAsyncLocalMidd
     - x-auth-user-id: 50
     
 - The response returns successfully 1 and 5 (which is already an issue since the dependency chain causes the DefaultServiceContext to be resolved before the middleware overwrites the values)
-2. Make a second HTTP request to service as follows:
+3. Make a second HTTP request to service as follows:
 - GET /api/values
   - Headers:
     - x-corp-id: 2
