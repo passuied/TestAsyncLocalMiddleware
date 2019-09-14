@@ -13,7 +13,7 @@ Troubleshooting issues with AsyncLocal when used within a middleware
 	- We can therefore never overwrite the corp-id and user-id values with the `x-auth-` header values
   - Event without the problem above, AsyncLocal should never keep values from the previous request since they are being set in the middleware, which should be a leaf... (at least that's my understanding...)
     - This is the part that is the most confusing...
-	- Incidently, when running the same scenario using `Microsoft.AspNetCore.TestHost`, the behavior above doesn't occur
+	- Interestingly, when running the same scenario using `Microsoft.AspNetCore.TestHost`, the behavior above doesn't occur
 
 ## How to reproduce issue
 1. Make an HTTP Request to service as follows:
