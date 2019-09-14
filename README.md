@@ -3,7 +3,7 @@ Troubleshooting issues with AsyncLocal when used within a middleware
 
 ## What we were trying to achieve
 - The TokenAuthenticationMiddleware (simplified here) is supposed to intercept the request, validate the tokens, retrieve corpId and userId value from it and override the values in the `DefaultServiceContext` scoped instance.
-   - In this example, to keept things simple, we have replaced the token with alternate `x-auth-` headers that should trump the standard `x-` headers
+   - In this example, to keep things simple, we have replaced the token with alternate `x-auth-` headers that should trump the standard `x-` headers
 - There are 2 problems here:
   - By having the `TokenAuthenticationMiddleware` have the following DI dependency chain:
 	```
@@ -13,7 +13,7 @@ Troubleshooting issues with AsyncLocal when used within a middleware
 	- We can therefore never overwrite the corp-id and user-id values with the `x-auth-` header values
   - Event without the problem above, AsyncLocal should never keep values from the previous request since they are being set in the middleware, which should be a leaf... (at least that's my understanding...)
     - This is the part that is the most confusing...
-	- Coincidently, when running the same scenario using `Microsoft.AspNetCore.TestHost`, the behavior above doesn't occur
+	- Incidently, when running the same scenario using `Microsoft.AspNetCore.TestHost`, the behavior above doesn't occur
 
 ## How to reproduce issue
 1. Make an HTTP Request to service as follows:
