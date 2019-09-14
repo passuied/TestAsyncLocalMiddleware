@@ -32,6 +32,7 @@ namespace TestAsyncLocalMiddleware
 
             services
                 .AddMvc()
+                .AddApplicationPart(typeof(Startup).Assembly)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
