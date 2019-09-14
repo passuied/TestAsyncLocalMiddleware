@@ -17,6 +17,9 @@ Troubleshooting issues with AsyncLocal when used within a middleware
 
 ## How to reproduce issue
 For convenience, use the Postman export located in `artifacts/TestAsyncLocalMiddleware.postman_collection.json` file.
+0. Pre-requisite
+- Start the service using following command:
+```> dotnet run -p ./TestAsyncLocalMiddleware```
 
 1. Make an HTTP Request to service as follows:
 - GET /api/values
