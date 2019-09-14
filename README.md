@@ -16,6 +16,8 @@ Troubleshooting issues with AsyncLocal when used within a middleware
 	- Interestingly, when running the same scenario using `Microsoft.AspNetCore.TestHost`, the behavior above doesn't occur
 
 ## How to reproduce issue
+For convenience, use the Postman export located in `artifacts/TestAsyncLocalMiddleware.postman_collection.json` file.
+
 1. Make an HTTP Request to service as follows:
 - GET /api/values
   - Headers:
