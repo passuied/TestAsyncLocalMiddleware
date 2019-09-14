@@ -11,7 +11,7 @@ Troubleshooting issues with AsyncLocal when used within a middleware
 	```
 	- We effectively create this conundrum where `DefaulServiceContext` is resolved before the middleware is able to set the values in `ISecurityTokenAccessor` instance
 	- We can therefore never overwrite the corp-id and user-id values with the `x-auth-` header values
-  - Event without the problem above, AsyncLocal should never keep values from the previous request since they are being set in the middleware, which should be a leaf... (at least that's my understanding...)
+  - Even without the problem above, AsyncLocal should never keep values from the previous request since they are being set in the middleware, which should be a leaf... (at least that's my understanding...)
     - This is the part that is the most confusing...
 	- Interestingly, when running the same scenario using `Microsoft.AspNetCore.TestHost`, the behavior above doesn't occur
 
