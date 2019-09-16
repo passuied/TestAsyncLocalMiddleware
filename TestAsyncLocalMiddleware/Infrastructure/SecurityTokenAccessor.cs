@@ -8,31 +8,38 @@ namespace TestAsyncLocalMiddleware.Infrastructure
 {
     public class SecurityTokenAccessor : ISecurityTokenAccessor
     {
-        private readonly AsyncLocal<IDictionary<string, object>> _asyncLocalDictionary = new AsyncLocal<IDictionary<string, object>>();
+        private readonly AsyncLocal<ContextHolder> _asyncLocalDictionary = new AsyncLocal<ContextHolder>();
 
         public IDictionary<string, object> ContextItems
         {
             get
             {
-                var result = GetThreadLocal();
-                if (result == null)
+                return _asyncLocalDictionary.Value?.Context;
+            }
+            set
+            {
+                var holder = _asyncLocalDictionary.Value;
+                if (holder != null)
                 {
-                    result = new Dictionary<string, object>();
-                    SetThreadLocal(result);
+                    // Clear current HttpContext trapped in the AsyncLocals, as its done.
+                    holder.Context = null;
                 }
-                return result;
+
+                if (value != null)
+                {
+                    // Use an object indirection to hold the dictionary in the AsyncLocal,
+                    // so it can be cleared in all ExecutionContexts when its cleared.
+                    _asyncLocalDictionary.Value = new ContextHolder { Context = value };
+                }
             }
         }
 
-        private IDictionary<string, object> GetThreadLocal()
-        {
-            return _asyncLocalDictionary.Value;
-        }
+        
 
-        private void SetThreadLocal(IDictionary<string, object> contextItems)
-        {
-            _asyncLocalDictionary.Value = contextItems;
-        }
+    }
 
+    public class ContextHolder
+    {
+        public IDictionary<string, Object> Context;
     }
 }

@@ -7,6 +7,7 @@ namespace TestAsyncLocalMiddleware.Infrastructure
         IDictionary<string, object> ContextItems
         {
             get;
+            set;
         }
     }
 }

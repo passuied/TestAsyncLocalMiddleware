@@ -24,9 +24,12 @@ namespace TestAsyncLocalMiddleware.Infrastructure
         {
 
             var contextCollection = new Dictionary<string, IEnumerable<string>>();
-            foreach (var kv in securityTokenAccessor.ContextItems)
+            if (securityTokenAccessor.ContextItems != null)
             {
-                contextCollection.Add(kv.Key, new[] { kv.Value.ToString() });
+                foreach (var kv in securityTokenAccessor.ContextItems)
+                {
+                    contextCollection.Add(kv.Key, new[] { kv.Value.ToString() });
+                }
             }
 
             if (headers != null)

@@ -53,13 +53,16 @@ namespace TestAsyncLocalMiddleware.Infrastructure
         /// </summary>
         private void PopulateTokenAccessor(IHeaderDictionary headers)
         {
+            var contextItems = new Dictionary<string, object>();
             //CorpId
             if (headers.ContainsKey(AuthCorpIdHeader))
-                _securityTokenAccessor.ContextItems.Add(ContextBuilder.CorpIdHeader, headers[AuthCorpIdHeader].First());
+                contextItems.Add(ContextBuilder.CorpIdHeader, headers[AuthCorpIdHeader].First());
 
             // UserId
             if (headers.ContainsKey(AuthUserHeader))
-                _securityTokenAccessor.ContextItems.Add(ContextBuilder.UserIdHeader, headers[AuthUserHeader].First());
+                contextItems.Add(ContextBuilder.UserIdHeader, headers[AuthUserHeader].First());
+
+            _securityTokenAccessor.ContextItems = contextItems;
 
         }
     }
